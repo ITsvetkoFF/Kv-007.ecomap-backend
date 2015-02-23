@@ -31,7 +31,43 @@ User's API:
 
 + app.get('/api/logout', routes.logOut) - log out; 
 
-+ app.post('/api/register', routes.register) - register (name, surname, email, password are required). User's id, name, surname, role and secret token will be returned;
++ app.post('/api/register', routes.register) - register (name, surname, email, password are required). User's id, name, surname, role and secret token will be returned
+
+Input data requested:
+
+```
+{"first_name":"Name","last_name":"Surname","email":"your_email@mail.com","password":"SmThRea11yStr0nG"}
+```
+
+Output information:
+```
+{
+    "name": "Name",
+    "surname": "Surname",
+    "userRoles_Id": 2,
+    "id": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 12,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
+    },
+    "role": "user",
+    "iat": 1424711155,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiRGFzaGEiLCJzdXJuYW1lIjoiRGkiLCJ1c2VyUm9sZXNfSWQiOjIsImlkIjp7ImZpZWxkQ291bnQiOjAsImFmZmVjdGVkUm93cyI6MSwiaW5zZXJ0SWQiOjEyLCJzZXJ2ZXJTdGF0dXMiOjIsIndhcm5pbmdDb3VudCI6MCwibWVzc2FnZSI6IiIsInByb3RvY29sNDEiOnRydWUsImNoYW5nZWRSb3dzIjowfSwicm9sZSI6InVzZXIiLCJpYXQiOjE0MjQ3MTExNTV9.4Uz0k8SYc71LfALdvJtBdcqco0I6hg-Ses-fknrF6WY"
+}
+```
+
+Status codes:
+
+**400** - Bad Request - if user has already existed;
+
+**401** - Unauthorized - if one of the field is incorrect or empty.
+
+---
 
 Admin's API:
 ------------
