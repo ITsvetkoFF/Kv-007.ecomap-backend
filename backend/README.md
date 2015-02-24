@@ -7,12 +7,12 @@ User's API:
 
 + app.get('/problems/:id', routes.getProblemId) - get detailed problem description (all information from tables 'Problems', 'Activities', 'Photos') by it's id;
 
-Input data requested:
+Request URL:
 ```
-'/api/problems/n' ,
+'/api/problems/:id' ,
 ```
 
-where n is a number
+where id is a number
 
 Output information:
 
@@ -59,9 +59,9 @@ Output information:
 
 + app.get('/api/getTitles',routes.getTitles) - get title, id and alias of all resources;
 
-Input data requested:
+Request URL:
 ```
-/api/getTitles
+'/api/getTitles'
 ```
 Output information:
 
@@ -114,7 +114,19 @@ Output information:
 
 + app.post('/api/register', routes.register) - register (name, surname, email, password are required). User's id, name, surname, role and secret token will be returned
 
-Input data requested:
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+
+
+Request URL:
+```
+'api/register'
+```
+
+Request body:
 
 ```
 {"first_name":"Name","last_name":"Surname","email":"your_email@mail.com","password":"SmThRea11yStr0nG"}
@@ -161,12 +173,18 @@ Admin's API:
 
 + app.delete('/api/activity/:id', routes.deleteComment) - delete comment by it's id;
 
-Input data requested:
+Headers:
 
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+Request URL:
 ```
-http://localhost:8090/api/activity/n
+'/api/activity/:id'
 ```
-,where n  is a number (id of the comment)
+where id  is a number
 
 Output information:
 ```
@@ -182,11 +200,18 @@ Output information:
 
 + app.post('/api/approve/:id', routes.approveProblems) - approve problem by it's id;
 
-Input data requested:
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+Request URL:
 ```
-http://localhost:8090/api/approve/n
+'/api/approve/:id'
 ```
-,where n  is a number (id of the problem)
+where id  is a number
 
 Output information:
 ```
@@ -231,9 +256,16 @@ Output information:
 |   Y   | year         |
 |   A   | All Time     |
 
-Input data requested:
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+Request URL:
 ```
-http://localhost:8090/api/getStats2/A
+'/api/getStats2/A'
 ```
 
 
@@ -270,3 +302,4 @@ Output information:
     }
 ]
 ```
+where id refers to the problem's name
