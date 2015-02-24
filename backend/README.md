@@ -1,11 +1,51 @@
 API
 ===
 User's API:
------------
+-------------
 
 + app.get('/problems', routes.getProblems) - get all moderated problems in brief (id, title, coordinates, type and status);
 
 + app.get('/problems/:id', routes.getProblemId) - get detailed problem description (all information from tables 'Problems', 'Activities', 'Photos') by it's id;
+
+Input data requested:
+```
+'/api/problems/n' ,
+```
+
+where n is a number
+
+Output information:
+
+```
+[
+    [
+        {
+            "Id": 5,
+            "Title": "Загрязнение Днепра",
+            "Content": "В городе Берислав нет очистных сооружений.",
+            "Proposal": "",
+            "Severity": 3,
+            "Moderation": 1,
+            "Votes": 13,
+            "Latitude": 46.8326,
+            "Longtitude": 33.416462,
+            "Status": 0,
+            "ProblemTypes_Id": 4
+        }
+    ],
+    [],
+    [
+        {
+            "Id": 5,
+            "Content": "{\"Content\":\"Проблему додано анонімно\",\"userName\":\"(Анонім)\"}",
+            "Date": "2014-02-27T15:24:53.000Z",
+            "ActivityTypes_Id": 1,
+            "Users_Id": 2,
+            "Problems_Id": 5
+        }
+    ]
+]
+```
 
 + app.get('/users/:idUser', routes.getUserId) - get user's name and surmane by id;
 
@@ -67,10 +107,10 @@ Status codes:
 
 **401** - Unauthorized - if one of the field is incorrect or empty.
 
----
 
-Admin's API:
 ------------
+Admin's API:
+-----------
 
 + app.get('/api/not_approved', routes.notApprovedProblems) - get all problems which are not approved in brief (id, title, coordinates, date of creation);
 
