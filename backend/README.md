@@ -59,6 +59,47 @@ Output information:
 
 + app.get('/api/getTitles',routes.getTitles) - get title, id and alias of all resources;
 
+Input data requested:
+```
+/api/getTitles
+```
+Output information:
+
+```
+[
+    {
+        "Title": "Про проект",
+        "Alias": "about",
+        "Id": 1,
+        "IsResource": 1
+    },
+    {
+        "Title": "Як організувати прибирання в парку",
+        "Alias": "cleaning",
+        "Id": 2,
+        "IsResource": 1
+    },
+    {
+        "Title": "Як добитись ліквідації незаконного звалища?",
+        "Alias": "removing",
+        "Id": 3,
+        "IsResource": 1
+    },
+    {
+        "Title": "Як зупинити комерційну експлуатацію тварин?",
+        "Alias": "stopping-exploitation",
+        "Id": 4,
+        "IsResource": 1
+    },
+    {
+        "Title": "Торгують первоцвітами - телефонуй: \"102-187!\"",
+        "Alias": "stopping-trade",
+        "Id": 5,
+        "IsResource": 1
+    }
+]
+
+```
 + app.get('/api/resources/:name',routes.getResource) -get all information about resource by it's id;
 
 + app.get('/activities/:idUser', routes.getUserActivity) - get user's activity list by user's id;
