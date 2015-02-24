@@ -220,3 +220,53 @@ Output information:
 + app.post('/api/clearNews',routes.clearNews) - delete all messages from newsline;
 
 + app.post('/api/clearOneNews',routes.clearOneNews) - delete one message from newsline;
+
++ app.get('/api/getStat2/:val',routes.getStat2) - number of added problems for value:
+
+| Value | Means        |
+| ----- |:------------:|
+|   D   | the last day |
+|   W   | week         |
+|   M   | month        |
+|   Y   | year         |
+|   A   | All Time     |
+
+Input data requested:
+```
+http://localhost:8090/api/getStats2/A
+```
+
+
+Output information:
+```
+[
+    {
+        "id": 1,
+        "value": 25
+    },
+    {
+        "id": 2,
+        "value": 65
+    },
+    {
+        "id": 3,
+        "value": 7
+    },
+    {
+        "id": 4,
+        "value": 41
+    },
+    {
+        "id": 5,
+        "value": 10
+    },
+    {
+        "id": 6,
+        "value": 9
+    },
+    {
+        "id": 7,
+        "value": 31
+    }
+]
+```
