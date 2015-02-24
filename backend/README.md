@@ -180,6 +180,33 @@ Output information:
 
 + app.put('/api/edit/:id', routes.editProblem) - edit problem (update all fields) by it's id;
 
++ app.post('/api/approve/:id', routes.approveProblems) - approve problem by it's id;
+
+Input data requested:
+```
+http://localhost:8090/api/approve/n
+```
+,where n  is a number (id of the problem)
+
+Output information:
+```
+{
+    "result": "success",
+    "err": "",
+    "json": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "(Rows matched: 1  Changed: 0  Warnings: 0",
+        "protocol41": true,
+        "changedRows": 0
+    }
+}
+```
+**401** - Unauthorized - if you are not admin
+
 + app.post('/api/addResource', routes.addResource) - add new resource into header;
 
 + app.put('/api/editResource/:id', routes.editResource) - edit existing resource;
