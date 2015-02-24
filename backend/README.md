@@ -161,6 +161,21 @@ Admin's API:
 
 + app.delete('/api/activity/:id', routes.deleteComment) - delete comment by it's id;
 
+Input data requested:
+
+```
+http://localhost:8090/api/activity/n
+```
+,where n  is a number (id of the comment)
+
+Output information:
+```
+{
+    "result": "success"
+}
+```
+**401** - Unauthorized - if you are not admin
+
 + app.delete('/api/photo/:id', routes.deletePhoto) - delete photo by photo's id;
 
 + app.put('/api/edit/:id', routes.editProblem) - edit problem (update all fields) by it's id;
