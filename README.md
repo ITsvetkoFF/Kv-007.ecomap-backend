@@ -5,6 +5,7 @@ API
 
 #### GET: api/problems
 Get all moderated problems in brief (id, title, coordinates, type and status);
+dfgdfg
 
 #### GET: api/problems/:id
 get detailed problem description (all information from tables 'Problems', 'Activities', 'Photos') by it's id;
