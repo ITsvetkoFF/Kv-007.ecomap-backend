@@ -12,13 +12,13 @@ User's API:
 #### GET: /api/usersProblem/:idUser'
 Get all user's problems in brief (id, title, coordinates, type and status) by user's id
 
-## Expected request
+##### Expected request
 ~~~
 /api/usersProblem/id
 ~~~
 where id is the user id
 
-## Expected response
+##### Expected response
 returns array of user's problems and empty array if there is no user with such id
 ~~~~
 [
@@ -49,13 +49,13 @@ returns array of user's problems and empty array if there is no user with such i
 ### POST /api/photo/:id'
 add new photo to existing problem by problem's id
 
-## Expected request
+##### Expected request
 ~~~
 /api/photo/id
 ~~~
 where id is the number of problem
 
-## Expected request body
+##### Expected request body
 ~~~
 ------WebKitFormBoundaryP9TDO4Mn81TydWOh
 Content-Disposition: form-data; name="userId"
@@ -85,7 +85,7 @@ Content-Disposition: form-data; name="null"
 Content-Disposition: form-data; name="file[0]"; filename="Desert.jpg"
 Content-Type: image/jpeg
 ~~~
-## Expected response
+##### Expected response
 ~~~
 {
     "json": [],
@@ -116,17 +116,17 @@ Admin's API:
 #### PUT /api/edit/:id'
 edit problem (update all fields) by it's id
 
-## Expected request
+##### Expected request
 ~~~
 /api/editProblem/id
 ~~~
 where id is the number of problem
 
-## Expected request body
+##### Expected request body
 ~~~
 {"Title":"string","Content":"string","Proposal":null,"Severity":2,"ProblemStatus":true}
 ~~~
-## Expected response
+##### Expected response
 ~~~
 {
     "result": "success",
@@ -143,7 +143,7 @@ where id is the number of problem
     }
 }
 ~~~
-## Error codes
+##### Error codes
 
 401 - Unauthorized - if not logged in as admin
 
@@ -158,12 +158,12 @@ where id is the number of problem
 #### GET /api/getNews
 get all messages for newsline
 
-## Expected request
+##### Expected request
 ~~~
 /api/getNews
 ~~~
 
-##Expected response
+##### Expected response
 return json with existing news
 ~~~
 {
@@ -192,11 +192,11 @@ return json with existing news
 #### GET /api/getStats4
 get all statistic problems
 
-## Expected request
+##### Expected request
 ~~~
 /api/getStats4
 ~~~
-## Expected response
+##### Expected response
 return json with 3 arrays of problems
 ~~~
 0: [{Id: 54, Title: "Завод з токсичними викидами в житловій зоні", Votes: 48},…]
