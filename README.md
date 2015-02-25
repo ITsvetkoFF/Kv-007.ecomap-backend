@@ -60,102 +60,8 @@ Get all user's problems in brief (id, title, coordinates, type and status) by us
 #### GET /api/activities/:idUser
 get all user's activity (id, type, description and id of related problem);
 
-
-----------------------
-
-####POST /api/problempost
-
-post new detailed environment problem to the server
-
-#####Required headers
-Content-Type: multipart/form-data; 
-
-
-#####Request parameters:
-
-| parameter | Description   |
-|---------- |-------------- |
-|title      | optional      |
-|content    | optional      |
-|proposal   | optional      |
-|latitude   | optional      |
-|longitude  | optional      |
-|type       | 1-6, required |
-|userId     | optional      |
-|userName   | optional      |
-|userSurname| optional      |
-
-######Example Request:
-
-http://localhost:8090/api/problempost
-
-```
-POST /api/problempost HTTP/1.1
-Host: localhost:8090
-Cache-Control: no-cache
-
-----WebKitFormBoundaryE19zNvXGzXaLvS5C
-Content-Disposition: form-data; name="title"
-
-Врятувати ліс
-----WebKitFormBoundaryE19zNvXGzXaLvS5C
-Content-Disposition: form-data; name="content"
-
-ліс страждає
-----WebKitFormBoundaryE19zNvXGzXaLvS5C
-Content-Disposition: form-data; name="proposal"
-
-Позбавити страждань
-----WebKitFormBoundaryE19zNvXGzXaLvS5C
-Content-Disposition: form-data; name="latitude2"
-
-45.4986464234233
-----WebKitFormBoundaryE19zNvXGzXaLvS5C
-Content-Disposition: form-data; name="longitude"
-
-35.03564453125
-----WebKitFormBoundaryE19zNbXGzXaLvS5C
-Content-Disposition: form-data; name="type"
-6
-
-```
-
-#####Response: 200
-Content-type: application/json;charset=UTF-8
-
-######Example 200 response:
-
-```
-{
-    "json": {
-        "fieldCount": 0,
-        "affectedRows": 1,
-        "insertId": 191,
-        "serverStatus": 2,
-        "warningCount": 0,
-        "message": "\u0000",
-        "protocol41": true,
-        "changedRows": 0
-    }
-}
-```
-#####NOTE
-The problem  will be seen pass in DB (api/problems) only after amdin confirmation 
-
-**Server crash** if to parameter **'userId'** string char is passed;
-
-
-#####Response: 500 Internal Server Error
-if required parameter missed
-
-######Example 500 response:
-```
-{
-    "err": "ER_BAD_NULL_ERROR"
-}
-```
- 
-----------------------
+#### POST /api/problempost
+post new problem;
 
 #### POST /api/vote
 vote for problem;
@@ -218,70 +124,8 @@ add new photo to existing problem by problem's id;
 #### POST /api/comment/:id
 add new comment to problem by problem's id;
 
-
-----------------------
-
-####POST /api/login
-
-log in for user (email and password are required). User's id, name, surname, role and secret token will be returned;
-
-#####Required headers:
-Content-Type: application/json;charset=utf-8
-
-#####Request parameters:
-
-|parameter | Description |
-|--------- |-------------| 
-|email     | required    |
-|password  | required    |
-
-######Example Request:
-
-http://localhost:8090/api/login
-
-```
-  {
-    "email":"vasia@gmail.com",
-    "password":"vasia"
-  }
-```
-#####Response: 200
-if OK
-Content-type: application/json;charset=UTF-8
-
-######Example 200 response:
-
-```
-  {
-    "id":92,
-    "name":"Вася",
-    "surname":"Вася",
-    "role":"user",
-    "iat": 3445678654,
-    "token":"tjJ0eSAiOiJKV1QiLCJhbGciPpJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6ImFkbWluIiwic3VybmFtZSI6bnVsbCwicm9sZSI6ImFkbWliaXN0cmF0b3IiLCJpYXQiOjE0MjQ3OTExNTN9.Bu2ihpRoJ0vF5af473HgtYxKQE_knKkuM3f8TLVjUEw",
-    "email":"vasia@gmail.com"
-  }
-```
-
-#####Response: 401 Unauthorized
-if email or password is wrong
-
-######Example 401response:
-
-```
-Unauthorized
-```
-
-
-####Response: 400 Bad Request
-syntax error (if email or password is wrong)
-
-#####Example 401response:
-
-```
-Bad Request
-```
-----------------------
+#### POST /api/login
+log in (email and password are required). User's id, name, surname, role and secret token will be returned;
 
 #### GET /api/logout
 log out; 
@@ -343,59 +187,8 @@ Admin's API:
 #### GET /api/not_approved
 get all problems which are not approved in brief (id, title, coordinates, date of creation);
 
-----------------------
-
-####DELETE /api/problem/:id
-
-delete single problem from database by if (all information from tables 'Problems', 'Activities', 'Photos')
-
-#####Method: DELETE
-
-#####Request:
-api/problem/:id
-
-
-#####Required headers:
-Content-type: application/json; charset=utf-8
-Authorization: (Cookie)
-
-######Example Request:
-```
-http://localhost:8090/api/problem/101
-```
-
-#####Response: 200
-Content-type: application/json;charset=UTF-8
-
-######Example response:
-
-```
-{
-    "result": "success",
-    "err": "",
-    "json": {
-        "fieldCount": 0,
-        "affectedRows": 1,
-        "insertId": 0,
-        "serverStatus": 2,
-        "warningCount": 0,
-        "message": "\u0000",
-        "protocol41": true,
-        "changedRows": 0
-    }
-}
-```
-
-#####Response: 401 Unauthorized
-if user don't authorized (no token in cookie)
-
-######Example 401 response:
-```
-
-  Unauthorized
-
-```
-----------------------
+#### DELETE /api/problem/:id
+delete problem by it's id (all information from tables 'Problems', 'Activities', 'Photos');
 
 #### DELETE /api/user/:id
 Delete user by user's id (only from 'Users');
@@ -477,51 +270,8 @@ edit problem (update all fields) by it's id;
 #### POST /api/addResource
 Add new resource into header;
 
-----------------------
-
-####PUT /api/editResource/:id
-
-#####Required headers:
-Content-type: application/json; charset=utf-8
-Authorization (cookie) aren't required(!);
-
-#####Request parameters:
-
-| parameter | Description   |
-|---------- |-------------- |
-|Alias      | optional      |
-|Content    | optional      |
-|Title      | optional      |
-|IsResource | optional      |
-
-Title could be tricky. If it dosn't specify resource with specified ID will be deleted;
-The same result occered then no JSON object has sent with request.
-
-######Example Request:
-http://localhost:8090/api/editResource/1
-
-```
-{
-    "Alias":"testing",
-    "Content":"<p>Some text</p>",
-    "Title":"TestTest",
-    "IsResource":1
-}
-```
-
-#####Response: 200
-Type: JSON
-
-######Example response:
-
-```
-{
-    "result":"success",
-    "err":""
-}
-```
-
-----------------------
+#### PUT /api/editResource/:id
+edit existing resource;
 
 #### DELETE /api/deleteResource/:id
 delete resource by it's id;
@@ -535,52 +285,8 @@ get all messages for newsline;
 #### POST /api/clearNews
 delete all messages from newsline;
 
-----------------------
-
-####POST  /api/clearOneNews
+#### POST /api/clearOneNews
 delete one message from newsline;
-
-######Required headers:
-Content-type: application/json; charset=utf-8
-Authorization (cookie);
-
-#####Request parameters:
-
-
-| parameter | Description   |
-|---------- |-------------- |
-|content    | optional      |
-
-######Example Request:
-http://localhost:8090/api/clearOneNews
-
-```
-{
-    "content":"ddfdfs"
-}
-```
-
-#####Response: 200
-Content-type: application/json;charset=UTF-8
-
-######Example response:
-
-```
-{
-"news": { 
-        "fieldCount":0,
-        "affectedRows":1,
-        "insertId":0,
-        "serverStatus":34,
-        "warningCount":0,
-        "message":"",
-        "protocol41":true,
-        "changedRows":0
-        }
-}
-```
-
-----------------------
 
 #### GET: api/getStat2/:val
 
