@@ -9,15 +9,16 @@ User's API:
 
 + app.get('/users/:idUser', routes.getUserId) - get user's name and surmane by id;
 
-+ app.get('/api/usersProblem/:idUser', routes.getUserProblemsById) - get all user's problems in brief (id, title, coordinates, type and status) by user's id;
-Expected request
+#### GET: /api/usersProblem/:idUser'
+Get all user's problems in brief (id, title, coordinates, type and status) by user's id
+
+## Expected request
 ~~~
 /api/usersProblem/id
 ~~~
 where id is the user id
 
-Expected response
-
+## Expected response
 returns array of user's problems and empty array if there is no user with such id
 ~~~~
 [
@@ -45,14 +46,16 @@ returns array of user's problems and empty array if there is no user with such i
 
 + app.get('/activities/:idUser', routes.getUserActivity) - get user's activity list by user's id;
 
-+ app.post('/api/photo/:id',routes.addNewPhotos) - add new photo to existing problem by problem's id;
-Expected request
+### POST /api/photo/:id'
+add new photo to existing problem by problem's id
+
+## Expected request
 ~~~
 /api/photo/id
 ~~~
 where id is the number of problem
 
-Expected request body
+## Expected request body
 ~~~
 ------WebKitFormBoundaryP9TDO4Mn81TydWOh
 Content-Disposition: form-data; name="userId"
@@ -82,7 +85,7 @@ Content-Disposition: form-data; name="null"
 Content-Disposition: form-data; name="file[0]"; filename="Desert.jpg"
 Content-Type: image/jpeg
 ~~~
-Expected response
+## Expected response
 ~~~
 {
     "json": [],
@@ -110,18 +113,20 @@ Admin's API:
 
 + app.delete('/api/photo/:id', routes.deletePhoto) - delete photo by photo's id;
 
-+ app.put('/api/edit/:id', routes.editProblem) - edit problem (update all fields) by it's id;
-Expected request
+#### PUT /api/edit/:id'
+edit problem (update all fields) by it's id
+
+## Expected request
 ~~~
 /api/editProblem/id
 ~~~
 where id is the number of problem
 
-Expected request body
+## Expected request body
 ~~~
 {"Title":"string","Content":"string","Proposal":null,"Severity":2,"ProblemStatus":true}
 ~~~
-Expected response
+## Expected response
 ~~~
 {
     "result": "success",
@@ -138,7 +143,7 @@ Expected response
     }
 }
 ~~~
-Error codes
+## Error codes
 
 401 - Unauthorized - if not logged in as admin
 
@@ -150,13 +155,15 @@ Error codes
 
 + app.post('/api/postNews',routes.postNews) - add message to the newsline;
 
-+ app.get('/api/getNews',routes.getNews) - get all messages for newsline;
-Expected request
+#### GET /api/getNews
+get all messages for newsline
+
+## Expected request
 ~~~
 /api/getNews
 ~~~
-Expected response
 
+##Expected response
 return json with existing news
 ~~~
 {
@@ -182,13 +189,14 @@ return json with existing news
 
 + app.get('/api/getStats3', routes.getStats3);
 
-+ app.get('/api/getStats4', routes.getStats4); - get all statistic problems
-Expected request
+#### GET /api/getStats4
+get all statistic problems
+
+## Expected request
 ~~~
 /api/getStats4
 ~~~
-Expected response
-
+## Expected response
 return json with 3 arrays of problems
 ~~~
 0: [{Id: 54, Title: "Завод з токсичними викидами в житловій зоні", Votes: 48},…]
