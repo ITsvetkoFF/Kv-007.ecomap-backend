@@ -109,7 +109,7 @@ Content-Disposition: form-data; name="proposal"
 ----WebKitFormBoundaryE19zNvXGzXaLvS5C
 Content-Disposition: form-data; name="latitude2"
 
-45.4986468234233
+45.4986464234233
 ----WebKitFormBoundaryE19zNvXGzXaLvS5C
 Content-Disposition: form-data; name="longitude"
 
