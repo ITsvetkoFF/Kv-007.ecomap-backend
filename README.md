@@ -254,7 +254,7 @@ Output information:
 
 + app.post('/api/clearOneNews',routes.clearOneNews) - delete one message from newsline;
 
-+ + app.get('/api/getStat2/:val',routes.getStat2) - number of added problems for value:
++ app.get('/api/getStat2/:val',routes.getStat2) - number of added problems for value:
 
 | Value | Means        |
 | ----- |:------------:|
