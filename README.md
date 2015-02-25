@@ -19,7 +19,7 @@ where id is the user id
 Expected response
 
 returns array of user's problems and empty array if there is no user with such id
-~~~
+~~~~
 [
     {
         "Id": 190,
@@ -31,7 +31,7 @@ returns array of user's problems and empty array if there is no user with such i
         "Date": "2015-02-24T14:27:22.000Z"
     }
 ]
-~~~
+~~~~
 
 + app.get('/api/activities/:idUser', routes.getUserActivity) - get all user's activity (id, type, description and id of related problem);
 
