@@ -60,7 +60,9 @@ Output information:
 
 + app.post('/api/vote', routes.postVote) - vote for problem;
 
-+ app.get('/api/getTitles',routes.getTitles) - get title, id and alias of all resources;
+#### GET: /api/getTitles
+
+Get title, id and alias of all resources;
 
 Request URL:
 ```
@@ -116,7 +118,9 @@ Output information:
 
 + app.get('/api/logout', routes.logOut) - log out; 
 
-+ app.post('/api/register', routes.register) - register (name, surname, email, password are required). User's id, name, surname, role and secret token will be returned;
+#### POST: api/register
+
+Register (name, surname, email, password are required). User's id, name, surname, role and secret token will be returned;
 
 Headers:
 
@@ -174,7 +178,9 @@ Admin's API:
 
 + app.delete('/api/user/:id', routes.deleteUser) - delete user by user's id (only from 'Users');
 
-+ app.delete('/api/activity/:id', routes.deleteComment) - delete comment by it's id;
+#### DELETE: api/activity/:id
+
+Delete comment by it's id;
 
 
 Headers:
@@ -202,7 +208,9 @@ Output information:
 
 + app.put('/api/edit/:id', routes.editProblem) - edit problem (update all fields) by it's id;
 
-+ app.post('/api/approve/:id', routes.approveProblems) - approve problem by it's id;
+#### POST: api/approve/:id
+
+Approve problem by it's id;
 
 Headers:
 
@@ -254,7 +262,9 @@ Output information:
 
 + app.post('/api/clearOneNews',routes.clearOneNews) - delete one message from newsline;
 
-+ app.get('/api/getStat2/:val',routes.getStat2) - number of added problems for value:
+#### GET: api/getStat2/:val
+
+Number of added problems for value:
 
 | Value | Means        |
 | ----- |:------------:|
