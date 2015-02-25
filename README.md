@@ -9,7 +9,7 @@ User's API:
 
 + app.get('/users/:idUser', routes.getUserId) - get user's name and surmane by id;
 
-#### GET: /api/usersProblem/:idUser'
+#### GET: /api/usersProblem/:idUser
 Get all user's problems in brief (id, title, coordinates, type and status) by user's id
 
 ##### Expected request
@@ -46,7 +46,7 @@ returns array of user's problems and empty array if there is no user with such i
 
 + app.get('/activities/:idUser', routes.getUserActivity) - get user's activity list by user's id;
 
-#### POST: /api/photo/:id'
+#### POST: /api/photo/:id
 add new photo to existing problem by problem's id
 
 ##### Expected request
@@ -113,7 +113,7 @@ Admin's API:
 
 + app.delete('/api/photo/:id', routes.deletePhoto) - delete photo by photo's id;
 
-#### PUT: /api/edit/:id'
+#### PUT: /api/edit/:id
 edit problem (update all fields) by it's id
 
 ##### Expected request
