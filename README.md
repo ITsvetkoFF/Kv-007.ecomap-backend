@@ -2,6 +2,7 @@ API
 ===
 
 ##User's API:
+Hello users!
 
 #### GET: api/problems
 Get all moderated problems in brief (id, title, coordinates, type and status);
