@@ -50,15 +50,20 @@ Output information:
 ```
 
 
-+ app.get('/users/:idUser', routes.getUserId) - get user's name and surmane by id;
+#### GET API/users/:idUser
+get user's name and surmane by id;
 
-+ app.get('/api/usersProblem/:idUser', routes.getUserProblemsById) - get all user's problems in brief (id, title, coordinates, type and status) by user's id;
+#### GET /api/usersProblem/:idUser
+Get all user's problems in brief (id, title, coordinates, type and status) by user's id;
 
-+ app.get('/api/activities/:idUser', routes.getUserActivity) - get all user's activity (id, type, description and id of related problem);
+#### GET /api/activities/:idUser
+get all user's activity (id, type, description and id of related problem);
 
-+ app.post('/api/problempost', routes.postProblem) - post new problem;
+#### POST /api/problempost
+post new problem;
 
-+ app.post('/api/vote', routes.postVote) - vote for problem;
+#### POST /api/vote
+vote for problem;
 
 #### GET: /api/getTitles
 
@@ -106,19 +111,25 @@ Output information:
 
 ```
 
-+ app.get('/api/resources/:name',routes.getResource) -get all information about resource by it's id;
+#### GET /api/resources/:name
+get all information about resource by it's id;
 
-+ app.get('/activities/:idUser', routes.getUserActivity) - get user's activity list by user's id;
+#### GET /activities/:idUser
+get user's activity list by user's id;
 
-+ app.post('/api/photo/:id',routes.addNewPhotos) - add new photo to existing problem by problem's id;
+#### POST /api/photo/:id
+add new photo to existing problem by problem's id;
 
-+ app.post('/api/comment/:id',routes.addComment) - add new comment to problem by problem's id;
+#### POST /api/comment/:id
+add new comment to problem by problem's id;
 
-+ app.post('/api/login', routes.logIn) - log in (email and password are required). User's id, name, surname, role and secret token will be returned;
+#### POST /api/login
+log in (email and password are required). User's id, name, surname, role and secret token will be returned;
 
-+ app.get('/api/logout', routes.logOut) - log out; 
+#### GET /api/logout
+log out; 
 
-#### POST: api/register
+#### POST: /api/register
 
 Register (name, surname, email, password are required). User's id, name, surname, role and secret token will be returned;
 
@@ -172,11 +183,14 @@ Status codes:
 Admin's API:
 ------------
 
-+ app.get('/api/not_approved', routes.notApprovedProblems) - get all problems which are not approved in brief (id, title, coordinates, date of creation);
+#### GET /api/not_approved
+get all problems which are not approved in brief (id, title, coordinates, date of creation);
 
-+ app.delete('/api/problem/:id', routes.deleteProblem) - delete problem by it's id (all information from tables 'Problems', 'Activities', 'Photos');
+#### DELETE /api/problem/:id
+delete problem by it's id (all information from tables 'Problems', 'Activities', 'Photos');
 
-+ app.delete('/api/user/:id', routes.deleteUser) - delete user by user's id (only from 'Users');
+#### DELETE /api/user/:id
+Delete user by user's id (only from 'Users');
 
 #### DELETE: api/activity/:id
 
@@ -204,11 +218,13 @@ Output information:
 ```
 **401** - Unauthorized - if you are not admin
 
-+ app.delete('/api/photo/:id', routes.deletePhoto) - delete photo by photo's id;
+#### DELETE api/photo/:id
+delete photo by photo's id;
 
-+ app.put('/api/edit/:id', routes.editProblem) - edit problem (update all fields) by it's id;
+#### PUT /api/edit/:id
+edit problem (update all fields) by it's id;
 
-#### POST: api/approve/:id
+#### POST api/approve/:id
 
 Approve problem by it's id;
 
@@ -244,23 +260,32 @@ Output information:
 ```
 **401** - Unauthorized - if you are not admin
 
-+ app.delete('/api/photo/:id', routes.deletePhoto) - delete photo by photo's id;
+#### DELETE /api/photo/:id
+delete photo by photo's id;
 
-+ app.put('/api/edit/:id', routes.editProblem) - edit problem (update all fields) by it's id;
+#### PUT /api/edit/:id
+edit problem (update all fields) by it's id;
 
-+ app.post('/api/addResource', routes.addResource) - add new resource into header;
+#### POST /api/addResource
+Add new resource into header;
 
-+ app.put('/api/editResource/:id', routes.editResource) - edit existing resource;
+#### PUT /api/editResource/:id
+edit existing resource;
 
-+ app.delete('/api/deleteResource/:id', routes.deleteResource) - delete resource by it's id;
+#### DELETE /api/deleteResource/:id
+delete resource by it's id;
 
-+ app.post('/api/postNews',routes.postNews) - add message to the newsline;
+#### POST /api/postNews
+add message to the newsline;
 
-+ app.post('/api/getNews',routes.getNews) - get all messages for newsline;
+#### POST /api/getNews
+get all messages for newsline;
 
-+ app.post('/api/clearNews',routes.clearNews) - delete all messages from newsline;
+#### POST /api/clearNews
+delete all messages from newsline;
 
-+ app.post('/api/clearOneNews',routes.clearOneNews) - delete one message from newsline;
+#### POST /api/clearOneNews
+delete one message from newsline;
 
 #### GET: api/getStat2/:val
 
