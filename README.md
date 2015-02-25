@@ -1,11 +1,13 @@
 API
 ===
-User's API:
------------
 
-+ app.get('/problems', routes.getProblems) - get all moderated problems in brief (id, title, coordinates, type and status);
+##User's API:
 
-+ app.get('/problems/:id', routes.getProblemId) - get detailed problem description (all information from tables 'Problems', 'Activities', 'Photos') by it's id;
+#### GET: api/problems
+Get all moderated problems in brief (id, title, coordinates, type and status);
+
+#### GET: api/problems/:id
+get detailed problem description (all information from tables 'Problems', 'Activities', 'Photos') by it's id;
 
 + app.get('/users/:idUser', routes.getUserId) - get user's name and surmane by id;
 
