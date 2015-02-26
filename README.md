@@ -567,7 +567,7 @@ Output information:
 ```
 **401** - Unauthorized - if you are not admin
 
-#### DELETE api/photo/:id
+#### DELETE api/photo/:link
 delete photo by photo's id;
 
 Headers:
@@ -579,7 +579,7 @@ Headers:
 
 ##### Expected request
 ```
-/api/activity/:link
+/api/photo/:link
 :link === photo's Id
 ```
 
@@ -674,9 +674,6 @@ Output information:
 ```
 **401** - Unauthorized - if you are not admin
 
-#### DELETE /api/photo/:id
-delete photo by photo's id;
-
 #### PUT /api/edit/:id
 edit problem (update all fields) by it's id;
 
@@ -734,6 +731,34 @@ delete resource by it's id;
 
 #### POST /api/postNews
 add message to the newsline;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+##### Expected request
+```
+/api/postNews
+```
+
+Request body:
+```
+{"news": "Some news"}
+```
+
+##### Expected response
+```
+{
+    "result": "ok"
+}
+```
+Status codes:
+```
+401 - Unauthorized - if you aren't authorized as admin
+```
 
 #### GET /api/getNews
 get all messages for newsline;
