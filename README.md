@@ -7,6 +7,29 @@ Hello users!
 #### GET: api/problems
 Get all moderated problems in brief (id, title, coordinates, type and status);
 
+Request URL:
+```
+/api/problems
+```
+
+Output information:
+```
+[
+    {
+        "Id": 1,
+        "Title": "Xxxxxxx",
+        "Latitude": 45.350166,
+        "Longtitude": 29.001091,
+        "ProblemTypes_Id": 4,
+        "Status": 1,
+        "Date": "2014-02-18T07:15:51.000Z"
+    },
+    ... other problems ...
+ ]
+
+```
+
+
 #### GET: api/problems/:id
 get detailed problem description (all information from tables 'Problems', 'Activities', 'Photos') by it's id;
 
@@ -200,7 +223,34 @@ if required parameter missed
 ----------------------
 
 #### POST /api/vote
-vote for problem;
+vote for a problem;
+
+Request URL:
+```
+/api/vote
+```
+
+#### Expected request
+~~~
+idProblem, userId
+~~~
+
+Output information:
+
+```
+{
+    "json": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "(Rows matched: 1  Changed: 1  Warnings: 0",
+        "protocol41": true,
+        "changedRows": 1
+    }
+}
+```
 
 #### GET: /api/getTitles
 
