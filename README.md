@@ -607,7 +607,7 @@ Output information:
 ```
 **401** - Unauthorized - if you are not admin
 
-#### DELETE api/photo/:link
+#### DELETE api/photo/:id
 delete photo by photo's id;
 
 Headers:
@@ -619,8 +619,7 @@ Headers:
 
 ##### Expected request
 ```
-/api/photo/:link
-:link === photo's Id
+/api/photo/:id
 ```
 
 ##### Expected response
