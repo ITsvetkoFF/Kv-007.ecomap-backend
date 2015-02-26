@@ -572,17 +572,19 @@ delete photo by photo's id;
 
 Headers:
 
-Header	Value
-Content-Type	application/json;charset=UTF-8
-Cookie	token=//admin's token//
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
 
 ##### Expected request
-
+```
 /api/activity/:link
 :link === photo's Id
+```
 
 ##### Expected response
-
+```
 {
     "result": "success",
     "err": "",
@@ -597,11 +599,11 @@ Cookie	token=//admin's token//
         "changedRows": 0
     }
 }
-
+```
 Status codes:
-
+```
 **401** - Unauthorized - if you aren't authorized as admin
-
+```
 #### PUT /api/edit/:id
 edit problem (update all fields) by it's id;
 
