@@ -2,8 +2,6 @@ API
 ===
 
 ##User's API:
-Hello users!
-Hello Igor!
 
 #### GET: api/problems
 Get all moderated problems in brief (id, title, coordinates, type and status);
@@ -56,6 +54,30 @@ Output information:
 
 + app.get('/api/usersProblem/:idUser', routes.getUserProblemsById) - get all user's problems in brief (id, title, coordinates, type and status) by user's id;
 
+#### GET: api/activities/:idUser
+get all user's activity (id, type, description and id of related problem);
+
+Request URL:
+
+/api/activities/:idUser
+
+where idUser is a number of User
+
+Output information:
+
+{
+    "json": [
+        {
+            "Id": 1,
+            "Content": "{\"Content\":\"Проблему додано анонімно\",\"userName\":\"(Анонім)\"}",
+            "Date": "2014-02-18T07:15:51.000Z",
+            "ActivityTypes_Id": 1,
+            "Problems_Id": 1
+        },
+		],
+    "length": 189
+}
+
 + app.get('/api/activities/:idUser', routes.getUserActivity) - get all user's activity (id, type, description and id of related problem);
 
 + app.post('/api/problempost', routes.postProblem) - post new problem;
@@ -106,7 +128,6 @@ Output information:
     }
 ]
 
-```
 
 + app.get('/api/resources/:name',routes.getResource) -get all information about resource by it's id;
 
@@ -114,7 +135,39 @@ Output information:
 
 + app.post('/api/photo/:id',routes.addNewPhotos) - add new photo to existing problem by problem's id;
 
-+ app.post('/api/comment/:id',routes.addComment) - add new comment to problem by problem's id;
+
+#### POST: api/comment/:id
+add new comment to problem by problem's id;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+
+Request URL:
+
+api/comment/:id
+
+Request body:
+
+{"data":[{"Content":"hello world", "userName":"admin", "userSurname":"null", "userId":1}]}
+
+Output information:
+
+[
+    [
+        {
+            "Id": 1,
+            "Content": "{\"Content\":\"Проблему додано анонімно\",\"userName\":\"(Анонім)\"}",
+            "Date": "2014-02-18T07:15:51.000Z",
+            "ActivityTypes_Id": 1,
+            "Users_Id": 2,
+            "Problems_Id": 1
+        }
+    ]
+]
+
 
 + app.post('/api/login', routes.logIn) - log in (email and password are required). User's id, name, surname, role and secret token will be returned;
 
@@ -174,7 +227,19 @@ Status codes:
 Admin's API:
 ------------
 
-+ app.get('/api/not_approved', routes.notApprovedProblems) - get all problems which are not approved in brief (id, title, coordinates, date of creation);
+#### GET: api/not_aprroved 
+get all problems which are not approved in brief (id, title, coordinates, date of creation);
+
+Request URL:
+```
+/api/not_aprroved/
+```
+where our problem is not approved
+
+Output information:
+
+[]
+
 
 + app.delete('/api/problem/:id', routes.deleteProblem) - delete problem by it's id (all information from tables 'Problems', 'Activities', 'Photos');
 
@@ -250,7 +315,31 @@ Output information:
 
 + app.put('/api/edit/:id', routes.editProblem) - edit problem (update all fields) by it's id;
 
-+ app.post('/api/addResource', routes.addResource) - add new resource into header;
+
+#### POST: api/addResource/
+add new resource into header;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+Request URL:
+
+/api/addResource/
+
+Request body:
+
+{"Title":"maxnew", "Content":"null", "Alias":"maxsfirst", "IsResource":"6"}
+
+Output information:
+
+{
+    "result": "success",
+    "err": ""
+}
 
 + app.put('/api/editResource/:id', routes.editResource) - edit existing resource;
 
@@ -261,6 +350,39 @@ Output information:
 + app.post('/api/getNews',routes.getNews) - get all messages for newsline;
 
 + app.post('/api/clearNews',routes.clearNews) - delete all messages from newsline;
+
+#### POST: api/clearNews/
+delete all messages from newsline;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+Request URL:
+
+/api/clearNews/
+
+Request body:
+
+{"Content":"hello again"}
+
+Output information:
+
+{
+    "news": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 34,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
+    }
+}
 
 + app.post('/api/clearOneNews',routes.clearOneNews) - delete one message from newsline;
 
