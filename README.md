@@ -477,6 +477,46 @@ Status codes:
 401 - Unauthorized - if you aren't authorized or one of request fields are empty
 ```
 
+#### GET /api/getStats3
+get stats for all time;
+
+##### Expected request
+```
+/api/getStats3
+```
+
+##### Expected response
+```
+[
+    [
+        {
+            "problems": 189,
+            "votes": 1427
+        }
+    ],
+    [
+        {
+            "photos": 0
+        }
+    ],
+    [
+        {
+            "comments": 0
+        }
+    ]
+]
+```
+Status codes:
+```
+404 - Not Found - if you send wrong request
+```
+Example:
+```
+http://localhost:8090/api/getStats3/1
+Cannot GET /api/getStats3/1
+
+```
+
 
 Admin's API:
 ------------
