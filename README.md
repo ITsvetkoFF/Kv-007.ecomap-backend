@@ -54,6 +54,26 @@ Output information:
 #### GET API/users/:idUser
 get user's name and surmane by id;
 
+##### Expected request
+~~~
+/api/users/:idUser
+~~~
+:idUser === user id
+
+##### Expected response
+returns JSON with user's name and surname or empty JSON if there is no user with selected id
+~~~~
+{
+    "json": [
+        {
+            "Name": "admin",
+            "Surname": null
+        }
+    ],
+    "length": 1
+}
+~~~~
+
 #### GET /api/usersProblem/:idUser
 Get all user's problems in brief (id, title, coordinates, type and status) by user's id;
 
@@ -229,7 +249,28 @@ Output information:
 ```
 
 #### GET /api/resources/:name
-get all information about resource by it's id;
+get all information about resource by it's alias;
+
+##### Expected request
+~~~
+/api/resources/:name
+~~~
+:name === one of about, cleaning, removing, stoping-exploitation, stoping-trade (resource name)
+
+##### Expected response
+returns JSON with description of resource
+~~~~
+[
+    {
+        "Id": 1,
+        "Alias": "about",
+        "Title": "Про проект",
+        "Content": "  <p>Цей проект замислювався Всесвітнім фондом природи в Україні як платформа, \r\n  здатна об’єднати зусилля різних неурядових організацій, компаній та незалежних \r\n  активістів для обміну досвідом та покращення стану природи нашої країни.</p> \r\n\r\n  <p>Дуже часто про локальні проблеми екології знають тільки місцеві організації та \r\n  декілька сот жителів. А як було б добре підключити до їх вирішення однодумців \r\n  з інших частин країни!</p> \r\n\r\n  <p>За допомогою цього сайту будь-яка людина чи організація \r\n  може вказати на екологічну проблему свого регіону та вирішити її разом з усією \r\n  Україною!</p> \r\n\r\n  <p>Ви можете позначити екологічну проблему на карті, дізнатися та долучитися до \r\n  вирішення інших проблем у різних куточках України, або просто проголосувати \r\n  за проблему, якщо вважаєте її важливою та першочерговою.</p> \r\n\r\n  <p>До вирішення 5-ти найважливіших проблем (за результатами голосування) долучиться \r\n  безпосередньо команда WWF в Україні.</p> \r\n\r\n  <p>Також ми будемо підказувати Вам, що робити для вирішення Вашої проблеми. \r\n  Корисну інформацію з цього приводу Ви знайдете у розділі сайту «Ресурси», \r\n  який буде постійно поповнюватися. Якщо Вам необхідна додаткова інформація, \r\n  надішліть нам лист із запитом. Якщо у Вас є досвід, поділіться ним!</p>\r\n\r\n  <p>Практичну реалізацію проект отримав, як і всі добрі починання, силами активних \r\n  та небайдужих людей. Початковий варіант цього сайту був написаний <a href=\"http://symphony-solutions.eu\">3-ма людьми</a> \r\n  за 48 годин в межах доброчинного хакатону <a href=\"http://hack4good.io/\">Hack4Good</a>. </p>\r\n\r\n  <p>Сайт не є ідеальним, але ми майже щодня щось нове прикручуємо, щось фіксаємо та щось поліпшуємо. \r\n  Успіх цього проекту залежить від Вас, наших користувачів. Якщо Ви помітили помилку чи глюк – просимо не полінуватися і <a href=\"https://github.com/vredchenko/enviromap/issues?page=1&state=open\">зазвітувати тут</a> (New Issue)</p>\r\n\r\n  <p>Також нам потрібна Ваша посильна допомога. Долучайтесь!\r\n\r\n  <ul>\r\n    <li>Якщо Ви вмілий програміст і бажаєте допомагати в розвитку проекту – ми будемо раді бачити Вас в нашій команді;</li>\r\n    <li>Якщо Ви маєте зауваження чи побажання щодо розширення функціональності проекту;</li>\r\n    <li>Ми також шукаємо людей для наповнення інформаційної секції «Ресурси»;</li>\r\n    <li>На початковій стадії запуску цього сервісу кожний активний користувач для нас на вагу золота, тож люб&#8217;язно просимо нас лайкати і про нас щебетати.</li>\r\n  </ul>\r\n\r\n  Що більше людей та організацій долучаться, то більше ми зможемо зробити \r\n  для природи України!</p>\r\n\r\n  <h2>Контакти</h2>\r\n\r\n  <p>\r\n    <ul>\r\n      <li>Александра Ковбаско <a href=\"mailto:artimia@gmail.com\">artimia@gmail.com</a></li>\r\n      <li>Валерій Редченко <a href=\"mailto:lazyval@gmail.com\">lazyval@gmail.com</a></li>\r\n    </ul>\r\n  </p>\r\n",
+        "IsResource": 1
+    }
+]
+~~~~
+
 
 #### GET /activities/:idUser
 get user's activity list by user's id;
@@ -402,6 +443,80 @@ Status codes:
 
 **401** - Unauthorized - if one of the field is incorrect or empty.
 
+#### POST /api/changePassword
+
+Changes password
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+
+
+##### Expected request
+```
+api/changePassword
+```
+
+Request body:
+
+```
+{"userId":"1", "old_password": "admin", "new_password":"admin", "new_password_second":"admin"}
+```
+
+##### Expected response
+```
+{
+    "result": "success"
+}
+```
+
+Status codes:
+```
+401 - Unauthorized - if you aren't authorized or one of request fields are empty
+```
+
+#### GET /api/getStats3
+get stats for all time;
+
+##### Expected request
+```
+/api/getStats3
+```
+
+##### Expected response
+```
+[
+    [
+        {
+            "problems": 189,
+            "votes": 1427
+        }
+    ],
+    [
+        {
+            "photos": 0
+        }
+    ],
+    [
+        {
+            "comments": 0
+        }
+    ]
+]
+```
+Status codes:
+```
+404 - Not Found - if you send wrong request
+```
+Example:
+```
+http://localhost:8090/api/getStats3/1
+Cannot GET /api/getStats3/1
+
+```
+
 
 Admin's API:
 ------------
@@ -495,6 +610,39 @@ Output information:
 #### DELETE api/photo/:id
 delete photo by photo's id;
 
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+##### Expected request
+```
+/api/photo/:id
+```
+
+##### Expected response
+```
+{
+    "result": "success",
+    "err": "",
+    "json": {
+        "fieldCount": 0,
+        "affectedRows": 0,
+        "insertId": 0,
+        "serverStatus": 34,
+        "warningCount": 0,
+        "message": "\u0000",
+        "protocol41": true,
+        "changedRows": 0
+    }
+}
+```
+Status codes:
+```
+401 - Unauthorized - if you aren't authorized as admin
+```
 #### PUT /api/edit/:id
 edit problem (update all fields) by it's id;
 
@@ -565,9 +713,6 @@ Output information:
 ```
 **401** - Unauthorized - if you are not admin
 
-#### DELETE /api/photo/:id
-delete photo by photo's id;
-
 #### PUT /api/edit/:id
 edit problem (update all fields) by it's id;
 
@@ -625,6 +770,34 @@ delete resource by it's id;
 
 #### POST /api/postNews
 add message to the newsline;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+##### Expected request
+```
+/api/postNews
+```
+
+Request body:
+```
+{"news": "Some news"}
+```
+
+##### Expected response
+```
+{
+    "result": "ok"
+}
+```
+Status codes:
+```
+401 - Unauthorized - if you aren't authorized as admin
+```
 
 #### GET /api/getNews
 get all messages for newsline;
