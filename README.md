@@ -54,6 +54,26 @@ Output information:
 #### GET API/users/:idUser
 get user's name and surmane by id;
 
+##### Expected request
+~~~
+/api/users/:idUser
+~~~
+:idUser === user id
+
+##### Expected response
+returns JSON with user's name and surname or empty JSON if there is no user with selected id
+~~~~
+{
+    "json": [
+        {
+            "Name": "admin",
+            "Surname": null
+        }
+    ],
+    "length": 1
+}
+~~~~
+
 #### GET /api/usersProblem/:idUser
 Get all user's problems in brief (id, title, coordinates, type and status) by user's id;
 
