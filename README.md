@@ -2,7 +2,6 @@ API
 ===
 
 ##User's API:
-Hello users!
 
 #### GET: api/problems
 Get all moderated problems in brief (id, title, coordinates, type and status);
@@ -125,8 +124,26 @@ returns array of user's problems and empty array if there is no user with such i
 #### GET /api/activities/:idUser
 get all user's activity (id, type, description and id of related problem);
 
+##### Expected request
+~~~
+/api/activities/:idUser
+~~~
+:idUser === user id
 
-----------------------
+Output information:
+
+{
+    "json": [
+        {
+            "Id": 1,
+            "Content": "{\"Content\":\"Проблему додано анонімно\",\"userName\":\"(Анонім)\"}",
+            "Date": "2014-02-18T07:15:51.000Z",
+            "ActivityTypes_Id": 1,
+            "Problems_Id": 1
+        },
+		],
+    "length": 189
+}
 
 ####POST /api/problempost
 
@@ -213,6 +230,7 @@ The problem  will be seen pass in DB (api/problems) only after amdin confirmatio
 #####Response: 500 Internal Server Error
 if required parameter missed
 
+<<<<<<< HEAD
 ######Example 500 response:
 ```
 {
@@ -224,6 +242,33 @@ if required parameter missed
 
 #### POST /api/vote
 vote for a problem;
+=======
+#### GET: api/activities/:idUser
+get all user's activity (id, type, description and id of related problem);
+
+Request URL:
+
+/api/activities/:idUser
+
+where idUser is a number of User
+
+Output information:
+
+{
+    "json": [
+        {
+            "Id": 1,
+            "Content": "{\"Content\":\"Проблему додано анонімно\",\"userName\":\"(Анонім)\"}",
+            "Date": "2014-02-18T07:15:51.000Z",
+            "ActivityTypes_Id": 1,
+            "Problems_Id": 1
+        },
+		],
+    "length": 189
+}
+
++ app.get('/api/activities/:idUser', routes.getUserActivity) - get all user's activity (id, type, description and id of related problem);
+>>>>>>> 9753d4f25ddc6b7d7b61c9924f0268db28101672
 
 Request URL:
 ```
@@ -296,7 +341,6 @@ Output information:
     }
 ]
 
-```
 
 #### GET /api/resources/:name
 get all information about resource by it's alias;
@@ -348,8 +392,44 @@ admin
 Content-Disposition: form-data; name="userSurname"
 
 
+<<<<<<< HEAD
 ------WebKitFormBoundaryP9TDO4Mn81TydWOh
 Content-Disposition: form-data; name="description"
+=======
+
+#### POST: api/comment/:id
+add new comment to problem by problem's id;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+
+Request URL:
+
+api/comment/:id
+
+Request body:
+
+{"data":[{"Content":"hello worlddd", "userName":"admin", "userSurname":"null", "userId":1}]}
+
+Output information:
+
+[
+    [
+        {
+            "Id": 1,
+            "Content": "{\"Content\":\"Проблему додано анонімно\",\"userName\":\"(Анонім)\"}",
+            "Date": "2014-02-18T07:15:51.000Z",
+            "ActivityTypes_Id": 1,
+            "Users_Id": 2,
+            "Problems_Id": 1
+        }
+    ]
+]
+
+>>>>>>> 9753d4f25ddc6b7d7b61c9924f0268db28101672
 
 
 ------WebKitFormBoundaryP9TDO4Mn81TydWOh
@@ -571,6 +651,7 @@ Cannot GET /api/getStats3/1
 Admin's API:
 ------------
 
+<<<<<<< HEAD
 #### GET /api/not_approved
 get all problems which are not approved in brief (id, title, coordinates, date of creation);
 
@@ -622,6 +703,21 @@ if user don't authorized (no token in cookie)
 
 ######Example 401 response:
 ```
+=======
+#### GET: api/not_aprroved 
+get all problems which are not approved in brief (id, title, coordinates, date of creation);
+
+Request URL:
+```
+/api/not_aprroved/
+```
+where our problem is not approved
+
+Output information:
+
+[]
+
+>>>>>>> 9753d4f25ddc6b7d7b61c9924f0268db28101672
 
   Unauthorized
 
@@ -789,8 +885,36 @@ Authorization (cookie) aren't required(!);
 Title could be tricky. If it dosn't specify resource with specified ID will be deleted;
 The same result occered then no JSON object has sent with request.
 
+<<<<<<< HEAD
 ######Example Request:
 http://localhost:8090/api/editResource/1
+=======
+
+#### POST: api/addResource/
+add new resource into header;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+Request URL:
+
+/api/addResource/
+
+Request body:
+
+{"Title":"maxnew", "Content":"null", "Alias":"maxsfirst", "IsResource":"6"}
+
+Output information:
+
+{
+    "result": "success",
+    "err": ""
+}
+>>>>>>> 9753d4f25ddc6b7d7b61c9924f0268db28101672
 
 ```
 {
@@ -922,7 +1046,44 @@ Content-type: application/json;charset=UTF-8
 }
 ```
 
+<<<<<<< HEAD
 ----------------------
+=======
+#### POST: api/clearNews/
+delete all messages from newsline;
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+|   Cookie   |     token=//admin's token//    |
+
+Request URL:
+
+/api/clearNews/
+
+Request body:
+
+{"Content":"hello again"}
+
+Output information:
+
+{
+    "news": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 34,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
+    }
+}
+
++ app.post('/api/clearOneNews',routes.clearOneNews) - delete one message from newsline;
+>>>>>>> 9753d4f25ddc6b7d7b61c9924f0268db28101672
 
 #### GET: api/getStat2/:val
 
