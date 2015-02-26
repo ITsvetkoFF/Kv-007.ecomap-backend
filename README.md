@@ -151,7 +151,7 @@ api/comment/:id
 
 Request body:
 
-{"data":[{"Content":"hello world", "userName":"admin", "userSurname":"null", "userId":1}]}
+{"data":[{"Content":"hello worlddd", "userName":"admin", "userSurname":"null", "userId":1}]}
 
 Output information:
 
