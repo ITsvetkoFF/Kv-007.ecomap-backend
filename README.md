@@ -473,9 +473,9 @@ Request body:
 ```
 
 Status codes:
-
-**401** - Unauthorized - if you aren't authorized or one of request fields are empty
-
+```
+401 - Unauthorized - if you aren't authorized or one of request fields are empty
+```
 
 
 Admin's API:
@@ -602,7 +602,7 @@ Headers:
 ```
 Status codes:
 ```
-**401** - Unauthorized - if you aren't authorized as admin
+401 - Unauthorized - if you aren't authorized as admin
 ```
 #### PUT /api/edit/:id
 edit problem (update all fields) by it's id;
