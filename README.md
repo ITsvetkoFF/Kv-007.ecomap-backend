@@ -443,6 +443,40 @@ Status codes:
 
 **401** - Unauthorized - if one of the field is incorrect or empty.
 
+#### POST /api/changePassword
+
+Changes password
+
+Headers:
+
+|   Header   |              Value             |
+| ---------- |:------------------------------:|
+|Content-Type| application/json;charset=UTF-8 |
+
+
+##### Expected request
+```
+api/changePassword
+```
+
+Request body:
+
+```
+{"userId":"1", "old_password": "admin", "new_password":"admin", "new_password_second":"admin"}
+```
+
+##### Expected response
+```
+{
+    "result": "success"
+}
+```
+
+Status codes:
+
+**401** - Unauthorized - if you aren't authorized or one of request fields are empty
+
+
 
 Admin's API:
 ------------
