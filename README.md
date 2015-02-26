@@ -249,13 +249,13 @@ Output information:
 ```
 
 #### GET /api/resources/:name
-get all information about resource by it's id;
+get all information about resource by it's alias;
 
 ##### Expected request
 ~~~
 /api/resources/:name
 ~~~
-:name === one of [about, cleaning, removing, stoping-exploitation, stoping-trade] (resource name)
+:name === one of about, cleaning, removing, stoping-exploitation, stoping-trade (resource name)
 
 ##### Expected response
 returns JSON with description of resource
